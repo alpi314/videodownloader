@@ -1,0 +1,787 @@
+[
+    {
+        "flag": "--help",
+        "argument": "",
+        "description": "Print this help text and exit"
+    },
+    {
+        "flag": "--version",
+        "argument": "",
+        "description": "Print program version and exit"
+    },
+    {
+        "flag": "--update",
+        "argument": "",
+        "description": "Update this program to latest version. Make sure that you have sufficient permissions (run with sudo if needed)"
+    },
+    {
+        "flag": "--ignore-errors",
+        "argument": "",
+        "description": "Continue on download errors, for example to skip unavailable videos in a playlist"
+    },
+    {
+        "flag": "--abort-on-error",
+        "argument": "",
+        "description": "Abort downloading of further videos (in the playlist or the command line) if an error occurs"
+    },
+    {
+        "flag": "--dump-user-agent",
+        "argument": "",
+        "description": "Display the current browser identification"
+    },
+    {
+        "flag": "--list-extractors",
+        "argument": "",
+        "description": "List all supported extractors"
+    },
+    {
+        "flag": "--extractor-descriptions",
+        "argument": "",
+        "description": "Output descriptions of all supported extractors"
+    },
+    {
+        "flag": "--force-generic-extractor",
+        "argument": "",
+        "description": "Force extraction to use the generic extractor"
+    },
+    {
+        "flag": "--default-search",
+        "argument": "PREFIX",
+        "description": "Use this prefix for unqualified URLs. For example \"gvsearch2:\" downloads two videos from google videos for youtube- dl \"large apple\". Use the value \"auto\" to let youtube-dl guess (\"auto_warning\" to emit a warning when guessing). \"error\" just throws an error. The default value \"fixup_error\" repairs broken URLs, but emits an error if this is not possible instead of searching."
+    },
+    {
+        "flag": "--ignore-config",
+        "argument": "",
+        "description": "Do not read configuration files. When given in the global configuration file /etc/youtube-dl.conf: Do not read the user configuration in ~/.config/youtube-dl/config (%APPDATA%/youtube-dl/config.txt on Windows)"
+    },
+    {
+        "flag": "--config-location",
+        "argument": "PATH",
+        "description": "Location of the configuration file; either the path to the config or its containing directory."
+    },
+    {
+        "flag": "--flat-playlist",
+        "argument": "",
+        "description": "Do not extract the videos of a playlist, only list them."
+    },
+    {
+        "flag": "--mark-watched",
+        "argument": "",
+        "description": "Mark videos watched (YouTube only)"
+    },
+    {
+        "flag": "--no-mark-watched",
+        "argument": "",
+        "description": "Do not mark videos watched (YouTube only)"
+    },
+    {
+        "flag": "--no-color",
+        "argument": "",
+        "description": "Do not emit color codes in output"
+    },
+    {
+        "flag": "--proxy",
+        "argument": "URL",
+        "description": "Use the specified HTTP/HTTPS/SOCKS proxy. To enable SOCKS proxy, specify a proper scheme. For example socks5://127.0.0.1:1080/. Pass in an empty string (--proxy \"\") for direct connection"
+    },
+    {
+        "flag": "--socket-timeout",
+        "argument": "SECONDS",
+        "description": "Time to wait before giving up, in seconds"
+    },
+    {
+        "flag": "--source-address",
+        "argument": "IP",
+        "description": "Client-side IP address to bind to"
+    },
+    {
+        "flag": "--force-ipv4",
+        "argument": "",
+        "description": "Make all connections via IPv4"
+    },
+    {
+        "flag": "--force-ipv6",
+        "argument": "",
+        "description": "Make all connections via IPv6"
+    },
+    {
+        "flag": "--geo-verification-proxy",
+        "argument": "URL",
+        "description": "Use this proxy to verify the IP address for some geo-restricted sites. The default proxy specified by --proxy (or none, if the option is not present) is used for the actual downloading."
+    },
+    {
+        "flag": "--geo-bypass",
+        "argument": "",
+        "description": "Bypass geographic restriction via faking X-Forwarded-For HTTP header"
+    },
+    {
+        "flag": "--no-geo-bypass",
+        "argument": "",
+        "description": "Do not bypass geographic restriction via faking X-Forwarded-For HTTP header"
+    },
+    {
+        "flag": "--geo-bypass-country",
+        "argument": "CODE",
+        "description": "Force bypass geographic restriction with explicitly provided two-letter ISO 3166-2 country code"
+    },
+    {
+        "flag": "--geo-bypass-ip-block",
+        "argument": "IP_BLOCK",
+        "description": "Force bypass geographic restriction with explicitly provided IP block in CIDR notation"
+    },
+    {
+        "flag": "--playlist-start",
+        "argument": "NUMBER",
+        "description": "Playlist video to start at (default is 1)"
+    },
+    {
+        "flag": "--playlist-end",
+        "argument": "NUMBER",
+        "description": "Playlist video to end at (default is last)"
+    },
+    {
+        "flag": "--playlist-items",
+        "argument": "ITEM_SPEC",
+        "description": "Playlist video items to download. Specify indices of the videos in the playlist separated by commas like: \"-- playlist-items 1,2,5,8\" if you want to download videos indexed 1, 2, 5, 8 in the playlist. You can specify range: \" --playlist-items 1-3,7,10-13\", it will download the videos at index 1, 2, 3, 7, 10, 11, 12 and 13."
+    },
+    {
+        "flag": "--match-title",
+        "argument": "REGEX",
+        "description": "Download only matching titles (case- insensitive regex or alphanumeric sub- string)"
+    },
+    {
+        "flag": "--reject-title",
+        "argument": "REGEX",
+        "description": "Skip download for matching titles (case-insensitive regex or alphanumeric sub-string)"
+    },
+    {
+        "flag": "--max-downloads",
+        "argument": "NUMBER",
+        "description": "Abort after downloading NUMBER files"
+    },
+    {
+        "flag": "--min-filesize",
+        "argument": "SIZE",
+        "description": "Do not download any videos smaller than SIZE (e.g. 50k or 44.6m)"
+    },
+    {
+        "flag": "--max-filesize",
+        "argument": "SIZE",
+        "description": "Do not download any videos larger than SIZE (e.g. 50k or 44.6m)"
+    },
+    {
+        "flag": "--date",
+        "argument": "DATE",
+        "description": "Download only videos uploaded in this date"
+    },
+    {
+        "flag": "--datebefore",
+        "argument": "DATE",
+        "description": "Download only videos uploaded on or before this date (i.e. inclusive)"
+    },
+    {
+        "flag": "--dateafter",
+        "argument": "DATE",
+        "description": "Download only videos uploaded on or after this date (i.e. inclusive)"
+    },
+    {
+        "flag": "--min-views",
+        "argument": "COUNT",
+        "description": "Do not download any videos with less than COUNT views"
+    },
+    {
+        "flag": "--max-views",
+        "argument": "COUNT",
+        "description": "Do not download any videos with more than COUNT views"
+    },
+    {
+        "flag": "--match-filter",
+        "argument": "FILTER",
+        "description": "Generic video filter. Specify any key (see the \"OUTPUT TEMPLATE\" for a list of available keys) to match if the key is present, !key to check if the key is not present, key > NUMBER (like \"comment_count > 12\", also works with >=, <, <=, !=, =) to compare against a number, key = 'LITERAL' (like \"uploader = 'Mike Smith'\", also works with !=) to match against a string literal and & to require multiple matches. Values which are not known are excluded unless you put a question mark (?) after the operator. For example, to only match videos that have been liked more than 100 times and disliked less than 50 times (or the dislike functionality is not available at the given service), but who also have a description, use --match-filter \"like_count > 100 & dislike_count <? 50 & description\" ."
+    },
+    {
+        "flag": "--no-playlist",
+        "argument": "",
+        "description": "Download only the video, if the URL refers to a video and a playlist."
+    },
+    {
+        "flag": "--yes-playlist",
+        "argument": "",
+        "description": "Download the playlist, if the URL refers to a video and a playlist."
+    },
+    {
+        "flag": "--age-limit",
+        "argument": "YEARS",
+        "description": "Download only videos suitable for the given age"
+    },
+    {
+        "flag": "--download-archive",
+        "argument": "FILE",
+        "description": "Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it."
+    },
+    {
+        "flag": "--include-ads",
+        "argument": "",
+        "description": "Download advertisements as well (experimental)"
+    },
+    {
+        "flag": "--limit-rate",
+        "argument": "RATE",
+        "description": "Maximum download rate in bytes per second (e.g. 50K or 4.2M)"
+    },
+    {
+        "flag": "--retries",
+        "argument": "RETRIES",
+        "description": "Number of retries (default is 10), or \"infinite\"."
+    },
+    {
+        "flag": "--fragment-retries",
+        "argument": "RETRIES",
+        "description": "Number of retries for a fragment (default is 10), or \"infinite\" (DASH, hlsnative and ISM)"
+    },
+    {
+        "flag": "--skip-unavailable-fragments",
+        "argument": "",
+        "description": "Skip unavailable fragments (DASH, hlsnative and ISM)"
+    },
+    {
+        "flag": "--abort-on-unavailable-fragment",
+        "argument": "",
+        "description": "Abort downloading when some fragment is not available"
+    },
+    {
+        "flag": "--keep-fragments",
+        "argument": "",
+        "description": "Keep downloaded fragments on disk after downloading is finished; fragments are erased by default"
+    },
+    {
+        "flag": "--buffer-size",
+        "argument": "SIZE",
+        "description": "Size of download buffer (e.g. 1024 or 16K) (default is 1024)"
+    },
+    {
+        "flag": "--no-resize-buffer",
+        "argument": "",
+        "description": "Do not automatically adjust the buffer size. By default, the buffer size is automatically resized from an initial value of SIZE."
+    },
+    {
+        "flag": "--http-chunk-size",
+        "argument": "SIZE",
+        "description": "Size of a chunk for chunk-based HTTP downloading (e.g. 10485760 or 10M) (default is disabled). May be useful for bypassing bandwidth throttling imposed by a webserver (experimental)"
+    },
+    {
+        "flag": "--playlist-reverse",
+        "argument": "",
+        "description": "Download playlist videos in reverse order"
+    },
+    {
+        "flag": "--playlist-random",
+        "argument": "",
+        "description": "Download playlist videos in random order"
+    },
+    {
+        "flag": "--xattr-set-filesize",
+        "argument": "",
+        "description": "Set file xattribute ytdl.filesize with expected file size"
+    },
+    {
+        "flag": "--hls-prefer-native",
+        "argument": "",
+        "description": "Use the native HLS downloader instead of ffmpeg"
+    },
+    {
+        "flag": "--hls-prefer-ffmpeg",
+        "argument": "",
+        "description": "Use ffmpeg instead of the native HLS downloader"
+    },
+    {
+        "flag": "--hls-use-mpegts",
+        "argument": "",
+        "description": "Use the mpegts container for HLS videos, allowing to play the video while downloading (some players may not be able to play it)"
+    },
+    {
+        "flag": "--external-downloader",
+        "argument": "COMMAND",
+        "description": "Use the specified external downloader. Currently supports aria2c,aria2p,avconv ,axel,curl,ffmpeg,httpie,wget"
+    },
+    {
+        "flag": "--external-downloader-args",
+        "argument": "ARGS",
+        "description": "Give these arguments to the external downloader"
+    },
+    {
+        "flag": "--batch-file",
+        "argument": "FILE",
+        "description": "File containing URLs to download ('-' for stdin), one URL per line. Lines starting with '#', ';' or ']' are considered as comments and ignored."
+    },
+    {
+        "flag": "--id",
+        "argument": "",
+        "description": "Use only video ID in file name"
+    },
+    {
+        "flag": "--output",
+        "argument": "TEMPLATE",
+        "description": "Output filename template, see the \"OUTPUT TEMPLATE\" for all the info"
+    },
+    {
+        "flag": "--output-na-placeholder",
+        "argument": "PLACEHOLDER",
+        "description": "Placeholder value for unavailable meta fields in output filename template (default is \"NA\")"
+    },
+    {
+        "flag": "--autonumber-start",
+        "argument": "NUMBER",
+        "description": "Specify the start value for %(autonumber)s (default is 1)"
+    },
+    {
+        "flag": "--restrict-filenames",
+        "argument": "",
+        "description": "Restrict filenames to only ASCII characters, and avoid \"&\" and spaces in filenames"
+    },
+    {
+        "flag": "--no-overwrites",
+        "argument": "",
+        "description": "Do not overwrite files"
+    },
+    {
+        "flag": "--continue",
+        "argument": "",
+        "description": "Force resume of partially downloaded files. By default, youtube-dl will resume downloads if possible."
+    },
+    {
+        "flag": "--no-continue",
+        "argument": "",
+        "description": "Do not resume partially downloaded files (restart from beginning)"
+    },
+    {
+        "flag": "--no-part",
+        "argument": "",
+        "description": "Do not use .part files - write directly into output file"
+    },
+    {
+        "flag": "--mtime",
+        "argument": "",
+        "description": "Use the Last-modified header to set the file modification time (default)"
+    },
+    {
+        "flag": "--no-mtime",
+        "argument": "",
+        "description": "Do not use the Last-modified header to set the file modification time"
+    },
+    {
+        "flag": "--write-description",
+        "argument": "",
+        "description": "Write video description to a .description file"
+    },
+    {
+        "flag": "--write-info-json",
+        "argument": "",
+        "description": "Write video metadata to a .info.json file"
+    },
+    {
+        "flag": "--write-annotations",
+        "argument": "",
+        "description": "Write video annotations to a .annotations.xml file"
+    },
+    {
+        "flag": "--load-info-json",
+        "argument": "FILE",
+        "description": "JSON file containing the video information (created with the \"--write- info-json\" option)"
+    },
+    {
+        "flag": "--cookies",
+        "argument": "FILE",
+        "description": "File to read cookies from and dump cookie jar in"
+    },
+    {
+        "flag": "--cache-dir",
+        "argument": "DIR",
+        "description": "Location in the filesystem where youtube-dl can store some downloaded information permanently. By default $XDG_CACHE_HOME/youtube-dl or ~/.cache/youtube-dl . At the moment, only YouTube player files (for videos with obfuscated signatures) are cached, but that may change."
+    },
+    {
+        "flag": "--no-cache-dir",
+        "argument": "",
+        "description": "Disable filesystem caching"
+    },
+    {
+        "flag": "--rm-cache-dir",
+        "argument": "",
+        "description": "Delete all filesystem cache files"
+    },
+    {
+        "flag": "--write-thumbnail",
+        "argument": "",
+        "description": "Write thumbnail image to disk"
+    },
+    {
+        "flag": "--write-all-thumbnails",
+        "argument": "",
+        "description": "Write all thumbnail image formats to disk"
+    },
+    {
+        "flag": "--list-thumbnails",
+        "argument": "",
+        "description": "Simulate and list all available thumbnail formats"
+    },
+    {
+        "flag": "--quiet",
+        "argument": "",
+        "description": "Activate quiet mode"
+    },
+    {
+        "flag": "--no-warnings",
+        "argument": "",
+        "description": "Ignore warnings"
+    },
+    {
+        "flag": "--simulate",
+        "argument": "",
+        "description": "Do not download the video and do not write anything to disk"
+    },
+    {
+        "flag": "--skip-download",
+        "argument": "",
+        "description": "Do not download the video"
+    },
+    {
+        "flag": "--get-url",
+        "argument": "",
+        "description": "Simulate, quiet but print URL"
+    },
+    {
+        "flag": "--get-title",
+        "argument": "",
+        "description": "Simulate, quiet but print title"
+    },
+    {
+        "flag": "--get-id",
+        "argument": "",
+        "description": "Simulate, quiet but print id"
+    },
+    {
+        "flag": "--get-thumbnail",
+        "argument": "",
+        "description": "Simulate, quiet but print thumbnail URL"
+    },
+    {
+        "flag": "--get-description",
+        "argument": "",
+        "description": "Simulate, quiet but print video description"
+    },
+    {
+        "flag": "--get-duration",
+        "argument": "",
+        "description": "Simulate, quiet but print video length"
+    },
+    {
+        "flag": "--get-filename",
+        "argument": "",
+        "description": "Simulate, quiet but print output filename"
+    },
+    {
+        "flag": "--get-format",
+        "argument": "",
+        "description": "Simulate, quiet but print output format"
+    },
+    {
+        "flag": "--dump-json",
+        "argument": "",
+        "description": "Simulate, quiet but print JSON information. See the \"OUTPUT TEMPLATE\" for a description of available keys."
+    },
+    {
+        "flag": "--dump-single-json",
+        "argument": "",
+        "description": "Simulate, quiet but print JSON information for each command-line argument. If the URL refers to a playlist, dump the whole playlist information in a single line."
+    },
+    {
+        "flag": "--print-json",
+        "argument": "",
+        "description": "Be quiet and print the video information as JSON (video is still being downloaded)."
+    },
+    {
+        "flag": "--newline",
+        "argument": "",
+        "description": "Output progress bar as new lines"
+    },
+    {
+        "flag": "--no-progress",
+        "argument": "",
+        "description": "Do not print progress bar"
+    },
+    {
+        "flag": "--console-title",
+        "argument": "",
+        "description": "Display progress in console titlebar"
+    },
+    {
+        "flag": "--verbose",
+        "argument": "",
+        "description": "Print various debugging information"
+    },
+    {
+        "flag": "--dump-pages",
+        "argument": "",
+        "description": "Print downloaded pages encoded using base64 to debug problems (very verbose)"
+    },
+    {
+        "flag": "--write-pages",
+        "argument": "",
+        "description": "Write downloaded intermediary pages to files in the current directory to debug problems"
+    },
+    {
+        "flag": "--print-traffic",
+        "argument": "",
+        "description": "Display sent and read HTTP traffic"
+    },
+    {
+        "flag": "--call-home",
+        "argument": "",
+        "description": "Contact the youtube-dl server for debugging"
+    },
+    {
+        "flag": "--no-call-home",
+        "argument": "",
+        "description": "Do NOT contact the youtube-dl server for debugging"
+    },
+    {
+        "flag": "--encoding",
+        "argument": "ENCODING",
+        "description": "Force the specified encoding (experimental)"
+    },
+    {
+        "flag": "--no-check-certificate",
+        "argument": "",
+        "description": "Suppress HTTPS certificate validation"
+    },
+    {
+        "flag": "--prefer-insecure",
+        "argument": "",
+        "description": "Use an unencrypted connection to retrieve information about the video. (Currently supported only for YouTube)"
+    },
+    {
+        "flag": "--user-agent",
+        "argument": "UA",
+        "description": "Specify a custom user agent"
+    },
+    {
+        "flag": "--referer",
+        "argument": "URL",
+        "description": "Specify a custom Referer: use if the video access is restricted to one domain"
+    },
+    {
+        "flag": "--add-header",
+        "argument": "FIELD:VALUE",
+        "description": "Specify a custom HTTP header and its value, separated by a colon ':'. You can use this option multiple times. NB Use --cookies rather than adding a Cookie header if its contents may be sensitive; data from a Cookie header will be sent to all domains, not just the one intended"
+    },
+    {
+        "flag": "--bidi-workaround",
+        "argument": "",
+        "description": "Work around terminals that lack bidirectional text support. Requires bidiv or fribidi executable in PATH"
+    },
+    {
+        "flag": "--sleep-interval",
+        "argument": "SECONDS",
+        "description": "Number of seconds to sleep before each download when used alone or a lower bound of a range for randomized sleep before each download (minimum possible number of seconds to sleep) when used along with --max-sleep-interval."
+    },
+    {
+        "flag": "--max-sleep-interval",
+        "argument": "SECONDS",
+        "description": "Upper bound of a range for randomized sleep before each download (maximum possible number of seconds to sleep). Must only be used along with --min- sleep-interval."
+    },
+    {
+        "flag": "--format",
+        "argument": "FORMAT",
+        "description": "Video format code, see the \"FORMAT SELECTION\" for all the info"
+    },
+    {
+        "flag": "--all-formats",
+        "argument": "",
+        "description": "Download all available video formats"
+    },
+    {
+        "flag": "--prefer-free-formats",
+        "argument": "",
+        "description": "Prefer free video formats unless a specific one is requested"
+    },
+    {
+        "flag": "--list-formats",
+        "argument": "",
+        "description": "List all available formats of requested videos"
+    },
+    {
+        "flag": "--youtube-skip-dash-manifest",
+        "argument": "",
+        "description": "Do not download the DASH manifests and related data on YouTube videos"
+    },
+    {
+        "flag": "--merge-output-format",
+        "argument": "FORMAT",
+        "description": "If a merge is required (e.g. bestvideo+bestaudio), output to given container format. One of mkv, mp4, ogg, webm, flv. Ignored if no merge is required"
+    },
+    {
+        "flag": "--write-sub",
+        "argument": "",
+        "description": "Write subtitle file"
+    },
+    {
+        "flag": "--write-auto-sub",
+        "argument": "",
+        "description": "Write automatically generated subtitle file (YouTube only)"
+    },
+    {
+        "flag": "--all-subs",
+        "argument": "",
+        "description": "Download all the available subtitles of the video"
+    },
+    {
+        "flag": "--list-subs",
+        "argument": "",
+        "description": "List all available subtitles for the video"
+    },
+    {
+        "flag": "--sub-format",
+        "argument": "FORMAT",
+        "description": "Subtitle format, accepts formats preference, for example: \"srt\" or \"ass/srt/best\""
+    },
+    {
+        "flag": "--sub-lang",
+        "argument": "LANGS",
+        "description": "Languages of the subtitles to download (optional) separated by commas, use --list-subs for available language tags"
+    },
+    {
+        "flag": "--username",
+        "argument": "USERNAME",
+        "description": "Login with this account ID"
+    },
+    {
+        "flag": "--password",
+        "argument": "PASSWORD",
+        "description": "Account password. If this option is left out, youtube-dl will ask interactively."
+    },
+    {
+        "flag": "--twofactor",
+        "argument": "TWOFACTOR",
+        "description": "Two-factor authentication code"
+    },
+    {
+        "flag": "--netrc",
+        "argument": "",
+        "description": "Use .netrc authentication data"
+    },
+    {
+        "flag": "--video-password",
+        "argument": "PASSWORD",
+        "description": "Video password (vimeo, youku)"
+    },
+    {
+        "flag": "--ap-mso",
+        "argument": "MSO",
+        "description": "Adobe Pass multiple-system operator (TV provider) identifier, use --ap-list-mso for a list of available MSOs"
+    },
+    {
+        "flag": "--ap-username",
+        "argument": "USERNAME",
+        "description": "Multiple-system operator account login"
+    },
+    {
+        "flag": "--ap-password",
+        "argument": "PASSWORD",
+        "description": "Multiple-system operator account password. If this option is left out, youtube-dl will ask interactively."
+    },
+    {
+        "flag": "--ap-list-mso",
+        "argument": "",
+        "description": "List all supported multiple-system operators"
+    },
+    {
+        "flag": "--extract-audio",
+        "argument": "",
+        "description": "Convert video files to audio-only files (requires ffmpeg/avconv and ffprobe/avprobe)"
+    },
+    {
+        "flag": "--audio-format",
+        "argument": "FORMAT",
+        "description": "Specify audio format: \"best\", \"aac\", \"flac\", \"mp3\", \"m4a\", \"opus\", \"vorbis\", or \"wav\"; \"best\" by default; No effect without -x"
+    },
+    {
+        "flag": "--audio-quality",
+        "argument": "QUALITY",
+        "description": "Specify ffmpeg/avconv audio quality, insert a value between 0 (better) and 9 (worse) for VBR or a specific bitrate like 128K (default 5)"
+    },
+    {
+        "flag": "--recode-video",
+        "argument": "FORMAT",
+        "description": "Encode the video to another format if necessary (currently supported: mp4|flv|ogg|webm|mkv|avi)"
+    },
+    {
+        "flag": "--postprocessor-args",
+        "argument": "ARGS",
+        "description": "Give these arguments to the postprocessor (if postprocessing is required)"
+    },
+    {
+        "flag": "--keep-video",
+        "argument": "",
+        "description": "Keep the video file on disk after the post-processing; the video is erased by default"
+    },
+    {
+        "flag": "--no-post-overwrites",
+        "argument": "",
+        "description": "Do not overwrite post-processed files; the post-processed files are overwritten by default"
+    },
+    {
+        "flag": "--embed-subs",
+        "argument": "",
+        "description": "Embed subtitles in the video (only for mp4, webm and mkv videos)"
+    },
+    {
+        "flag": "--embed-thumbnail",
+        "argument": "",
+        "description": "Embed thumbnail in the audio as cover art"
+    },
+    {
+        "flag": "--add-metadata",
+        "argument": "",
+        "description": "Write metadata to the video file"
+    },
+    {
+        "flag": "--metadata-from-title",
+        "argument": "FORMAT",
+        "description": "Parse additional metadata like song title / artist from the video title. The format syntax is the same as --output. Regular expression with named capture groups may also be used. The parsed parameters replace existing values. Example: --metadata-from-title \"%(artist)s - %(title)s\" matches a title like \"Coldplay - Paradise\". Example (regex): --metadata-from-title \"(?P<artist>.+?) - (?P<title>.+)\""
+    },
+    {
+        "flag": "--xattrs",
+        "argument": "",
+        "description": "Write metadata to the video file's xattrs (using dublin core and xdg standards)"
+    },
+    {
+        "flag": "--fixup",
+        "argument": "POLICY",
+        "description": "Automatically correct known faults of the file. One of never (do nothing), warn (only emit a warning), detect_or_warn (the default; fix file if we can, warn otherwise)"
+    },
+    {
+        "flag": "--prefer-avconv",
+        "argument": "",
+        "description": "Prefer avconv over ffmpeg for running the postprocessors"
+    },
+    {
+        "flag": "--prefer-ffmpeg",
+        "argument": "",
+        "description": "Prefer ffmpeg over avconv for running the postprocessors (default)"
+    },
+    {
+        "flag": "--ffmpeg-location",
+        "argument": "PATH",
+        "description": "Location of the ffmpeg/avconv binary; either the path to the binary or its containing directory."
+    },
+    {
+        "flag": "--exec",
+        "argument": "CMD",
+        "description": "Execute a command on the file after downloading and post-processing, similar to find's -exec syntax. Example: --exec 'adb push {} /sdcard/Music/ && rm {}'"
+    },
+    {
+        "flag": "--convert-subs",
+        "argument": "FORMAT",
+        "description": "Convert the subtitles to other format (currently supported: srt|ass|vtt|lrc)"
+    }
+]

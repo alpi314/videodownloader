@@ -1,0 +1,32 @@
+<style>
+    #logout-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 10px;
+    }
+
+    #logout-button form {
+        margin: 0;
+    }
+
+    #logout-button form input[type="submit"] {
+        background-color: #333;
+        border: 0;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        padding: 10px;
+        width: 100%;
+    }
+
+    #logout-button form input[type="submit"]:hover {
+        background-color: #444;
+    }
+</style>
+
+<div id="logout-button">
+    <form action="/logout" method="post">
+        <input type="submit" name="logout" value="Logout">
+    </form>
+</div>

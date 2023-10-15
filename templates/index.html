@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downloader</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 auto;
+            max-width: 500px;
+            padding: 20px 30px;
+            margin-top: 50px;
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+        .container form {
+            margin-top: 30px;
+        }
+
+        .container form input[type="text"] {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .container form input[type="submit"] {
+            background-color: #333;
+            border: 0;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .container form input[type="submit"]:hover {
+            background-color: #444;
+        }
+
+        .flag-help-text {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+            padding: 10px;
+        }
+
+        .flag-help-active {
+            display: block;
+        }
+
+        .flag-help-inactive {
+            display: none;
+        }
+
+        .flag-help {
+            margin: 5px;
+        }
+
+        .flag {
+            margin-top: 10px;
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .flag-inputs {
+            display: block;
+            margin-top: 10px;
+        }
+
+        form {
+            display: grid;
+            justify-items: center;
+        }
+
+        #url_input {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'logout.html' %}
+
+    <div class="container" id="main_container">
+        <h1>Video Downloader</h1>
+        <form action="/download" method="post" enctype="multipart/form-data">
+            <input id="url_input" type="text" name="url" placeholder="Enter Video or Playlist URL">
+            <input type="submit" value="Download">
+
+            <div id="flags">
+                {% for flag in flags %}
+                <div class="flag">
+                    <h5>{{ flag.flag }}</h5>
+                    {% if flag.argument != "": %}
+                    <label for="input_{{ flag.flag }}">{{ flag.argument }}</label>
+                    <input name="input_{{ flag.flag }}" {% if flag.argument=="FILE" : %} type="file" {% else %}
+                        type="text" {% endif %}>
+                    {% else %}
+                    <label for="checkbox_{{ flag.flag }}">Use: </label>
+                    <input type="checkbox" name="checkbox_{{ flag.flag }}">
+                    {% endif %}
+                    <div>
+                        <svg class="flag-help" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                        </svg>
+                        <div class="flag-help-text flag-help-inactive">
+                            {{ flag.description }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const flagHelps = document.querySelectorAll('.flag-help');
+        const flagHelpTexts = document.querySelectorAll('.flag-help-text');
+
+        flagHelps.forEach((flagHelp, index) => {
+            flagHelp.addEventListener('click', () => {
+                if (flagHelpTexts[index].classList.contains('flag-help-inactive')) {
+                    flagHelpTexts[index].classList.remove('flag-help-inactive');
+                    flagHelpTexts[index].classList.add('flag-help-active');
+                } else {
+                    flagHelpTexts[index].classList.remove('flag-help-active');
+                    flagHelpTexts[index].classList.add('flag-help-inactive');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

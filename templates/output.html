@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Downloader</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 auto;
+            max-width: 500px;
+            padding: 20px 30px;
+            margin-top: 50px;
+            max-height: 100%;
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+        .progress_bar {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+            padding: 10px;
+        }
+
+        #download_progress,
+        #video_download_progress {
+            width: 100%;
+        }
+
+        #download_bar,
+        #video_download_bar {
+            border: 0;
+            border-radius: 5px;
+            background-color: #02611b;
+            cursor: pointer;
+            margin-top: 10px;
+            height: 15px;
+        }
+
+        #output {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+            padding: 10px;
+            height: 60%;
+            overflow-y: scroll;
+        }
+
+        #logs,
+        #debug {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+
+        .progress_text {
+            font-weight: bold;
+        }
+
+        #info {
+            font-weight: bold;
+        }
+
+        .right {
+            float: right;
+        }
+
+        #download_button {
+            display: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: #333;
+            border: 0;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        #download_button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'logout.html' %}
+    <div class="container" id="main_container">
+        <h1>Downloader Output</h1>
+        <div id="info">
+            <p>Key: {{ key }}</p>
+        </div>
+        <div class="progress_bar">
+            Total Progress: <span class="progress_text" id="total_progress"></span>
+            <span class="right" id="download_eta"></span>
+            <div id="download_progress">
+                <div id="download_bar">
+                </div>
+            </div>
+        </div>
+        <div class="progress_bar">
+            Video Progress: <span class="progress_text" id="video_progress"></span>
+            <span class="right" id="video_download_eta"></span>
+            <div id="video_download_progress">
+                <div id="video_download_bar">
+                </div>
+            </div>
+        </div>
+        <button id="download_button" onclick="window.location.href='/download/{{ key }}'">Download</button>
+        <div id="output">
+            <h3>Output</h3>
+            <div id="logs">
+
+            </div>
+
+            <h3>Debug</h1>
+                <div id="debug">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        KEY = "{{ key }}";
+
+        window.onload = function () {
+            document.getElementById('main_container').style.height = (window.innerHeight - 100) + 'px';
+
+            var refreshInterval = setInterval(() => {
+                fetch('/output/logs', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "key": KEY,
+                    }),
+                    headers: {
+                        "content-type": "application/json",
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('logs').innerHTML = data.download_progress;
+                        document.getElementById('debug').innerHTML = data.debug;
+                    });
+                fetch('/output/progress', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        "key": KEY,
+                    }),
+                    headers: {
+                        "content-type": "application/json",
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('total_progress').innerHTML = data.progress.downloaded_videos + " / " + data.progress.total_videos;
+                        document.getElementById('video_progress').innerHTML = Math.round(data.progress.current_video_progress * 100) + "%";
+
+                        document.getElementById('download_bar').style.width = Math.round(100 * data.progress.downloaded_videos / data.progress.total_videos) + "%";
+                        document.getElementById('video_download_bar').style.width = Math.round(data.progress.current_video_progress * 100) + "%";
+
+                        document.getElementById('download_eta').innerHTML = Math.round(data.progress.total_eta) + "s";
+                        document.getElementById('video_download_eta').innerHTML = Math.round(data.progress.current_video_eta) + "s";
+
+                        if (data.progress.finished) {
+                            clearInterval(refreshInterval);
+                            document.getElementById('download_button').style.display = "block";
+                        }
+                    });
+            }, 1000);
+
+        }
+    </script>
+</body>
+
+</html>
